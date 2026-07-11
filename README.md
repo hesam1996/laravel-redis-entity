@@ -32,7 +32,7 @@ php artisan redis-entity:make products --model=Product
 Usage:
 
 ```php
-$products = new ProductsEntity();
+$products = new ProductRedisEntity();
 
 $products->getAll();      // first call → DB, next calls → Redis
 $products->get(42);       // single record
