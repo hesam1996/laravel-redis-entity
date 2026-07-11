@@ -1,0 +1,26 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use {{ namespacedModel }};
+use Hesam1996\RedisEntity\Support\BaseRedisEntity;
+
+class {{ class }} extends BaseRedisEntity
+{
+    /**
+     * The Redis entity name (used as the hash key).
+     */
+    protected string $entity = '{{ entity }}';
+
+    /**
+     * The Eloquent model used as the fallback data source.
+     */
+    protected ?string $model = {{ model }}::class;
+
+    /**
+     * Time-to-live in seconds (applied to the whole entity).
+     */
+    // protected ?int $ttl = 3600;
+}

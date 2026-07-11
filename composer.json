@@ -1,0 +1,40 @@
+{
+  "name": "hesam1996/laravel-redis-entity",
+  "description": "Generate clean Redis-backed entity service classes with full CRUD support for Laravel.",
+  "keywords": [
+    "laravel redis crud generator",
+    "laravel redis",
+    "redis entity",
+    "redis crud",
+    "redis crud generator"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": "^8.1",
+    "illuminate/support": "^10.0|^11.0|^12.0",
+    "illuminate/console": "^10.0|^11.0|^12.0",
+    "illuminate/redis": "^10.0|^11.0|^12.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^8.0|^9.0",
+    "phpunit/phpunit": "^10.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Hesam1996\\RedisEntity\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Hesam1996\\RedisEntity\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Hesam1996\\RedisEntity\\RedisEntityServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "stable"
+}

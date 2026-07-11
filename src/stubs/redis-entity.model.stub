@@ -1,0 +1,41 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ namespacedModel }};
+use Hesam1996\RedisEntity\Support\BaseRedisEntity;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+
+class {{ class }} extends BaseRedisEntity
+{
+    protected string $entity = '{{ entity }}';
+
+    protected ?string $model = {{ model }}::class;
+
+    /**
+     * Customize the query used to fetch records from the database.
+     */
+    protected function query(): Builder
+    {
+        return {{ model }}::query();
+    }
+
+    /**
+     * Determine the Redis hash field name for a given model.
+     */
+    protected function hydrateKey(Model $model): string
+    {
+        return (string) $model->getKey();
+    }
+
+    /**
+     * Determine the value stored in Redis for a given model.
+     *
+     * @return array<string, mixed>
+     */
+    protected function hydrateValue(Model $model): array
+    {
+        return $model->toArray();
+    }
+}
