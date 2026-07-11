@@ -32,13 +32,14 @@ php artisan redis-entity:make products --model=Product
 Usage:
 
 ```php
-$products = new ProductRedisEntity();
+$productEntity = new ProductRedisEntity();
 
-$products->getAll();      // first call → DB, next calls → Redis
-$products->get(42);       // single record
-$products->set('42', [...]);
-$products->forget('42');
-$products->clear();       // invalidate cache, next read re-warms from DB
+$products = $productEntity->getAll();      // first call → DB, next calls → Redis
+$product = $productEntity->get(42);       // single record
+
+$productEntity->set('42', [...]);
+$productEntity->forget('42');
+$productEntity->clear();       // invalidate cache, next read re-warms from DB
 ```
 
 ## How it works
