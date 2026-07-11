@@ -147,8 +147,8 @@ abstract class BaseRedisEntity implements RedisEntityInterface
     {
         $payload = $this->query()
             ->get()
-            ->mapWithKeys(fn (Model $record): array => [
-                (string) $this->hydrateKey($record) => $this->hydrateValue($record),
+            ->mapWithKeys(fn (Model $model): array => [
+                (string) $this->hydrateKey($model) => $this->hydrateValue($model),
             ]);
 
         $this->setMany($payload);
@@ -188,18 +188,18 @@ abstract class BaseRedisEntity implements RedisEntityInterface
     /**
      * The hash field name for a given record. Defaults to the primary key.
      */
-    protected function hydrateKey(Model $record): string|int
+    protected function hydrateKey(Model $model): string|int
     {
-        return $record->getKey();
+        return $model->getKey();
     }
 
     /**
      * The value stored in Redis for a given record.
      * Override to store a subset of attributes or a DTO-like array.
      */
-    protected function hydrateValue(Model $record): mixed
+    protected function hydrateValue(Model $model): mixed
     {
-        return $record->toArray();
+        return $model->toArray();
     }
 
     /*
